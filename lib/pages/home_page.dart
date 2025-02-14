@@ -1,3 +1,8 @@
+import 'package:donut_app_2b_delgado/tabs/burguer_tab.dart';
+import 'package:donut_app_2b_delgado/tabs/donut_tab.dart';
+import 'package:donut_app_2b_delgado/tabs/pancakes_tab.dart';
+import 'package:donut_app_2b_delgado/tabs/pizza_tab.dart';
+import 'package:donut_app_2b_delgado/tabs/smoothie_tab.dart';
 import 'package:donut_app_2b_delgado/utils/my_tab.dart';
 import 'package:flutter/material.dart';
 
@@ -53,9 +58,22 @@ class _HomePageState extends State<HomePage> {
           ),
       
           //TabBar
-          TabBar(tabs: myTabs)
+          TabBar(tabs: myTabs),
+
+
           //TabBarView
-      
+          Expanded(
+            child: TabBarView(children:[
+            DonutTab(),
+            BurgerTab(),
+            SmoothieTab(),
+            PancakesTab(),
+            PizzaTab(),
+            ] ),
+          ),
+          
+          
+                
           //Carrito
         ],)
       ),
