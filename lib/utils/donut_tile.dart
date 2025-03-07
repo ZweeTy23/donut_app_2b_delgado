@@ -5,8 +5,9 @@ class DonutTile extends StatelessWidget {
   final String donutPrice;
   final dynamic donutColor;
   final String imageName;
+  final String donutStore;
 
-  const DonutTile({super.key, required this.donutFlavor, required this.donutPrice, this.donutColor, required this.imageName});
+  const DonutTile({super.key, required this.donutFlavor, required this.donutStore, required this.donutPrice, this.donutColor, required this.imageName});
 
   @override
   Widget build(BuildContext context) {
@@ -51,13 +52,45 @@ class DonutTile extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
               child: Image.asset(imageName),
-            )
+            ),
             //DonutText
-
+            Text(donutFlavor, style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20)
+            ),
+            SizedBox(
+              height: 4,
+            ),
+            //TODO: agregar texto de la tienda
+            Text(donutStore, style: TextStyle(
+              fontWeight: FontWeight.w300,
+              fontSize: 17,
+              color: Colors.blueGrey)
+            ),
+            SizedBox(
+              height: 4,
+            ),
             //LoveIcon+AddButton
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Icon(Icons.favorite_border,
+                  color: Colors.pink[400],
+                  ),
+                  const Text(
+                    "Add",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      decoration: TextDecoration.underline),
+                    ),
+                ],
+              ),)
           ],
+          )
         )
-      ),
-    );
+      );
   }
 }
