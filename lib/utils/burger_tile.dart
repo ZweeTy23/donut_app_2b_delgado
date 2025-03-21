@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 class BurgerTile extends StatelessWidget {
   final String burgerFlavor;
   final String burgerPrice;
-  final dynamic burger;
+  final MaterialColor burger;
   final String imageName;
   final String burgerStore;
+  final Function(String, double) addToCart;
 
-  const BurgerTile({super.key, required this.burgerFlavor, required this.burgerStore, required this.burgerPrice, this.burger, required this.imageName});
+  const BurgerTile({super.key, required this.burgerFlavor, required this.burgerStore, required this.burgerPrice, required this.imageName, required this.burger, required this.addToCart});
 
-  @override
+  @override 
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(12.0),
@@ -76,21 +77,26 @@ class BurgerTile extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Icon(Icons.favorite_border,
-                  color: Colors.pink[400],
-                  ),
-                  const Text(
+                  Icon(Icons.favorite_border, color: Colors.pink[400]),
+                  GestureDetector(
+                    onTap: () {
+                      // Agregar al carrito
+                      addToCart(burgerFlavor, double.parse(burgerPrice));
+                    },
+                  child: const Text(
                     "Add",
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                       decoration: TextDecoration.underline),
                     ),
+                  )
                 ],
-              ),)
+              ),
+            )
           ],
-          )
         )
-      );
+      )
+    );
   }
 }

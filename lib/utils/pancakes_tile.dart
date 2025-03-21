@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 class PancakesTile extends StatelessWidget {
   final String pancakesFlavor;
   final String pancakesPrice;
-  final dynamic pancakes;
+  final MaterialColor pancakes;
   final String imageName;
   final String pancakesStore;
+  final Function(String, double) addToCart;
 
-  const PancakesTile({super.key, required this.pancakesFlavor, required this.pancakesStore, required this.pancakesPrice, this.pancakes, required this.imageName});
+  const PancakesTile({super.key, required this.pancakesFlavor, required this.pancakesStore, required this.pancakesPrice, required this.pancakes, required this.imageName, required this.addToCart});
 
   @override
   Widget build(BuildContext context) {
@@ -76,21 +77,26 @@ class PancakesTile extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Icon(Icons.favorite_border,
-                  color: Colors.pink[400],
-                  ),
-                  const Text(
+                  Icon(Icons.favorite_border, color: Colors.pink[400]),
+                  GestureDetector(
+                    onTap: () {
+                      // Agregar al carrito
+                      addToCart(pancakesFlavor, double.parse(pancakesPrice));
+                    },
+                  child: const Text(
                     "Add",
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                       decoration: TextDecoration.underline),
                     ),
+                  )
                 ],
-              ),)
+              ),
+            )
           ],
-          )
         )
-      );
+      )
+    );
   }
 }

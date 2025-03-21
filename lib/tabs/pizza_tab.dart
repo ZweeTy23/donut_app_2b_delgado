@@ -4,16 +4,18 @@ import 'package:flutter/material.dart';
 class PizzaTab extends StatelessWidget {
   final List pizzaOnSale = [
     // [pizza, pizzaPrice, pizzaColor, imageName],
-     ["Ice Cream","Krispy Kreme", "36", Colors.blue, "lib/images/icecream_pizza.png"],
-     ["Strawberry","Dunkin pizzas","45", Colors.red,"lib/images/strawberry_pizza.png"],
-     ["Grape","Costco","84", Colors.purple,"lib/images/grape_pizza.png"],
-     ["Choco","Walmart","95", Colors.brown, 'lib/images/chocolate_pizza.png'],
-     ["Ice Cream","Krispy Kreme", "36", Colors.blue, "lib/images/icecream_pizza.png"],
-     ["Strawberry","Dunkin pizzas","45", Colors.red,"lib/images/strawberry_pizza.png"],
-     ["Grape","Costco","84", Colors.purple,"lib/images/grape_pizza.png"],
-     ["Choco","Walmart","95", Colors.brown, 'lib/images/chocolate_pizza.png'],
+     ["Ice Cream","Krispy Kreme", "36", Colors.blue, "lib/images/basicpizza.png"],
+     ["Strawberry","Dunkin pizzas","45", Colors.red,"lib/images/lovepizza.png"],
+     ["Grape","Costco","84", Colors.purple,"lib/images/mexicanpizza.png"],
+     ["Choco","Walmart","95", Colors.brown, 'lib/images/mixpizza.png'],
+     ["Ice Cream","Krispy Kreme", "36", Colors.blue, "lib/images/peperonipizza.png"],
+     ["Strawberry","Dunkin pizzas","45", Colors.red,"lib/images/slicepizza.png"],
+     ["Grape","Costco","84", Colors.purple,"lib/images/chessepizza.png"],
+     ["Choco","Walmart","95", Colors.brown, 'lib/images/italianpizza.png'],
    ];
-  PizzaTab({super.key});
+  final Function(String, double) addToCart;
+
+  PizzaTab({super.key, required this.addToCart});
 
   @override
    Widget build(BuildContext context) {
@@ -30,12 +32,13 @@ class PizzaTab extends StatelessWidget {
        ),
        itemBuilder: (context, index){
           var pizzaTile = PizzaTile(
-            pizza: pizzaOnSale[index][0],
+            pizzaFlavor: pizzaOnSale[index][0],
             pizzaStore: pizzaOnSale[index][1],
-            pizzaPrice:pizzaOnSale[index][2],
-            imageName:pizzaOnSale[index][3], 
-            pizzaFlavor: pizzaOnSale[index][4], 
-            
+            pizzaPrice: pizzaOnSale[index][2],
+            imageName: pizzaOnSale[index][4],
+            pizza: pizzaOnSale[index][3],
+            addToCart: addToCart,
+                    
           );
           return pizzaTile;
         }

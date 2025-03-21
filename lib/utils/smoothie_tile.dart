@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 class SmoothieTile extends StatelessWidget {
   final String smoothieFlavor;
   final String smoothiePrice;
-  final dynamic smoothie;
+  final MaterialColor smoothie;
   final String imageName;
   final String smoothieStore;
+  final Function(String, double) addToCart;
 
-  const SmoothieTile({super.key, required this.smoothieFlavor, required this.smoothieStore, required this.smoothiePrice, this.smoothie, required this.imageName});
+  const SmoothieTile({super.key, required this.smoothieFlavor, required this.smoothieStore, required this.smoothiePrice, required this.smoothie, required this.imageName, required this.addToCart});
 
   @override
   Widget build(BuildContext context) {
@@ -76,21 +77,26 @@ class SmoothieTile extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Icon(Icons.favorite_border,
-                  color: Colors.pink[400],
-                  ),
-                  const Text(
+                  Icon(Icons.favorite_border, color: Colors.pink[400]),
+                  GestureDetector(
+                    onTap: () {
+                      // Agregar al carrito
+                      addToCart(smoothieFlavor, double.parse(smoothiePrice));
+                    },
+                  child: const Text(
                     "Add",
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                       decoration: TextDecoration.underline),
                     ),
+                  )
                 ],
-              ),)
+              ),
+            )
           ],
-          )
         )
-      );
+      )
+    );
   }
 }

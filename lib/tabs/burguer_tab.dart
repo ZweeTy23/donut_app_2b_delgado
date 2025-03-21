@@ -2,18 +2,21 @@ import 'package:donut_app_2b_delgado/utils/burger_tile.dart';
 import 'package:flutter/material.dart';
 
 class BurgerTab extends StatelessWidget {
+  final Function(String, double) addToCart;
+
+  BurgerTab({super.key, required this.addToCart});
+  
   final List burgerOnSale = [
     // [burger, burgerPrice, burgerColor, imageName],
-     ["Ice Cream","Krispy Kreme", "36", Colors.blue, "lib/images/icecream_burger.png"],
-     ["Strawberry","Dunkin burgers","45", Colors.red,"lib/images/strawberry_burger.png"],
-     ["Grape","Costco","84", Colors.purple,"lib/images/grape_burger.png"],
-     ["Choco","Walmart","95", Colors.brown, 'lib/images/chocolate_burger.png'],
-     ["Ice Cream","Krispy Kreme", "36", Colors.blue, "lib/images/icecream_pizza.png"],
-     ["Strawberry","Dunkin pizzas","45", Colors.red,"lib/images/strawberry_pizza.png"],
-     ["Grape","Costco","84", Colors.purple,"lib/images/grape_pizza.png"],
-     ["Choco","Walmart","95", Colors.brown, 'lib/images/chocolate_pizza.png'],
+     ["Normal", "Burger King", "36", Colors.blue, "lib/images/AjonjoliBurger.png"],
+     ["American", "McDonald", "45", Colors.red, "lib/images/AmericanBurger.png"],
+     ["Basic", "Carls Jr", "84", Colors.purple, "lib/images/Basic.png"],
+     ["Burger W/ Fries", "Angry Angus", "95", Colors.brown, 'lib/images/BurgerAndFries.png'],
+     ["Captain","Burger King", "36",Colors.lime, "lib/images/CaptainBurger.png"],
+     ["Combo","My Home","45",Colors.blueAccent,"lib/images/ComboBurger.png"],
+     ["Large","Carls Jr","84",Colors.blueGrey,"lib/images/LargeBurger.png"],
+     ["Sabro","Angry Angus","95", Colors.pink,'lib/images/SabroBurger.png'],
    ];
-  BurgerTab({super.key});
 
   @override
    Widget build(BuildContext context) {
@@ -30,11 +33,12 @@ class BurgerTab extends StatelessWidget {
        ),
        itemBuilder: (context, index){
           var burgerTile = BurgerTile(
-            burger: burgerOnSale[index][0],
-            burgerStore: burgerOnSale[index][1],
-            burgerPrice:burgerOnSale[index][2],
-            imageName:burgerOnSale[index][3], 
-            burgerFlavor: burgerOnSale[index][4], 
+            burgerFlavor: burgerOnSale[index][0],
+    burgerStore: burgerOnSale[index][1],
+    burgerPrice: burgerOnSale[index][2],
+    imageName: burgerOnSale[index][4],
+    burger: burgerOnSale[index][3],
+    addToCart: addToCart,
             
           );
           return burgerTile;

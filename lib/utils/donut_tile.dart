@@ -6,8 +6,9 @@ class DonutTile extends StatelessWidget {
   final dynamic donutColor;
   final String imageName;
   final String donutStore;
+  final Function(String, double) addToCart;
 
-  const DonutTile({super.key, required this.donutFlavor, required this.donutStore, required this.donutPrice, this.donutColor, required this.imageName});
+  const DonutTile({super.key, required this.donutFlavor, required this.donutStore, required this.donutPrice, this.donutColor, required this.imageName, required this.addToCart});
 
   @override
   Widget build(BuildContext context) {
@@ -76,21 +77,26 @@ class DonutTile extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Icon(Icons.favorite_border,
-                  color: Colors.pink[400],
-                  ),
-                  const Text(
+                  Icon(Icons.favorite_border, color: Colors.pink[400]),
+                  GestureDetector(
+                    onTap: () {
+                      // Agregar al carrito
+                      addToCart(donutFlavor, double.parse(donutPrice));
+                    },
+                  child: const Text(
                     "Add",
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                       decoration: TextDecoration.underline),
                     ),
+                  )
                 ],
-              ),)
+              ),
+            )
           ],
-          )
         )
-      );
+      )
+    );
   }
 }

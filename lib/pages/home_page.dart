@@ -23,6 +23,18 @@ class _HomePageState extends State<HomePage> {
     MyTab(iconPath: 'lib/icons/pizza.png'),
   ];
 
+  // Estado del carrito
+  List<Map<String, dynamic>> cartItems = []; // Lista de elementos en el carrito
+  double totalPrice = 0.0; // Precio total
+
+  // Función para agregar un elemento al carrito
+  void addToCart(String name, double price) {
+    setState(() {
+      cartItems.add({"name": name, "price": price});
+      totalPrice += price;
+      }
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,11 +76,11 @@ class _HomePageState extends State<HomePage> {
           //TabBarView
           Expanded(
             child: TabBarView(children:[
-            DonutTab(),
-            BurgerTab(),
-            SmoothieTab(),
-            PancakesTab(),
-            PizzaTab(),
+            DonutTab(addToCart: addToCart),
+            BurgerTab(addToCart: addToCart),
+            SmoothieTab(addToCart: addToCart),
+            PancakesTab(addToCart: addToCart),
+            PizzaTab(addToCart: addToCart),
               ] 
             ),
           ),
@@ -83,11 +95,12 @@ class _HomePageState extends State<HomePage> {
                   //Poner los elementos en los extremos de la fila
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Padding(padding: EdgeInsets.only(left: 28),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 28),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("2 items | \$45", 
+                        Text("${cartItems.length} items | \$${totalPrice.toStringAsFixed(2)}", 
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold

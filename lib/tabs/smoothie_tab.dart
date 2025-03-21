@@ -4,16 +4,18 @@ import 'package:flutter/material.dart';
 class SmoothieTab extends StatelessWidget {
   final List smoothieOnSale = [
     // [smoothie, smoothiePrice, smoothieColor, imageName],
-     ["Ice Cream","Krispy Kreme", "36", Colors.blue, "lib/images/icecream_smoothie.png"],
-     ["Strawberry","Dunkin smoothies","45", Colors.red,"lib/images/strawberry_smoothie.png"],
-     ["Grape","Costco","84", Colors.purple,"lib/images/grape_smoothie.png"],
-     ["Choco","Walmart","95", Colors.brown, 'lib/images/chocolate_smoothie.png'],
-     ["Ice Cream","Krispy Kreme", "36", Colors.blue, "lib/images/icecream_pizza.png"],
-     ["Strawberry","Dunkin pizzas","45", Colors.red,"lib/images/strawberry_pizza.png"],
-     ["Grape","Costco","84", Colors.purple,"lib/images/grape_pizza.png"],
-     ["Choco","Walmart","95", Colors.brown, 'lib/images/chocolate_pizza.png'],
+     ["Ice Cream","Krispy Kreme", "36", Colors.blue, "lib/images/ameicansmoothie.png"],
+     ["Strawberry","Dunkin smoothies","45", Colors.red,"lib/images/cocosmoothie.png"],
+     ["Grape","Costco","84", Colors.purple,"lib/images/gasoline.png"],
+     ["Choco","Walmart","95", Colors.brown, 'lib/images/mangosmoothie.png'],
+     ["Ice Cream","Krispy Kreme", "36", Colors.blue, "lib/images/mintsmoothie.png"],
+     ["Strawberry","Dunkin pizzas","45", Colors.red,"lib/images/secretsmoothie.png"],
+     ["Grape","Costco","84", Colors.purple,"lib/images/strawberrysmoothie.png"],
+     ["Choco","Walmart","95", Colors.brown, 'lib/images/watermelonsmoothie.png'],
    ];
-  SmoothieTab({super.key});
+  final Function(String, double) addToCart;
+
+  SmoothieTab({super.key, required this.addToCart});
 
   @override
    Widget build(BuildContext context) {
@@ -30,12 +32,12 @@ class SmoothieTab extends StatelessWidget {
        ),
        itemBuilder: (context, index){
           var smoothieTile = SmoothieTile(
-            smoothie: smoothieOnSale[index][0],
+            smoothieFlavor: smoothieOnSale[index][0],
             smoothieStore: smoothieOnSale[index][1],
-            smoothiePrice:smoothieOnSale[index][2],
-            imageName:smoothieOnSale[index][3], 
-            smoothieFlavor: smoothieOnSale[index][4], 
-            
+            smoothiePrice: smoothieOnSale[index][2],
+            imageName: smoothieOnSale[index][4],
+            smoothie: smoothieOnSale[index][3],
+            addToCart: addToCart,
           );
           return smoothieTile;
         }

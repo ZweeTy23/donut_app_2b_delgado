@@ -1,21 +1,21 @@
 import 'package:donut_app_2b_delgado/utils/donut_tile.dart';
 import 'package:flutter/material.dart';
 
-
 class DonutTab extends StatelessWidget {
-  //Lista de Donas
+  final Function(String, double) addToCart;
+
+  DonutTab({super.key, required this.addToCart});
    final List donutsOnSale = [
     // [donutFlavor, donutPrice, donutColor, imageName],
-     ["Ice Cream","Krispy Kreme", "36", Colors.blue, "lib/images/icecream_donut.png"],
+     ["Chocolate","Krispy Kreme", "36", Colors.blue, "lib/images/chocolate_donut.png"],
      ["Strawberry","Dunkin Donuts","45", Colors.red,"lib/images/strawberry_donut.png"],
      ["Grape","Costco","84", Colors.purple,"lib/images/grape_donut.png"],
-     ["Choco","Walmart","95", Colors.brown, 'lib/images/chocolate_donut.png'],
+     ["Donut W/ Coffee","Walmart","95", Colors.brown, 'lib/images/donutwithcoffee.png'],
      ["Ice Cream","Krispy Kreme", "36", Colors.blue, "lib/images/icecream_donut.png"],
-     ["Strawberry","Dunkin Donuts","45", Colors.red,"lib/images/strawberry_donut.png"],
-     ["Grape","Costco","84", Colors.purple,"lib/images/grape_donut.png"],
-     ["Choco","Walmart","95", Colors.brown, 'lib/images/chocolate_donut.png'],
+     ["Mint","Dunkin Donuts","45", Colors.red,"lib/images/mintdonut.png"],
+     ["Love","Costco","84", Colors.purple,"lib/images/lovedonut.png"],
+     ["Package","Walmart","95", Colors.brown, 'lib/images/threedonut.png'],
    ];
-  DonutTab({super.key});
 
    @override
    Widget build(BuildContext context) {
@@ -37,6 +37,7 @@ class DonutTab extends StatelessWidget {
             donutPrice:donutsOnSale[index][2],
             donutColor: donutsOnSale[index][3],
             imageName:donutsOnSale[index][4], 
+            addToCart: addToCart,
             
           );
           return donutTile;
