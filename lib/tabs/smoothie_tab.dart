@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 class SmoothieTab extends StatelessWidget {
   final List smoothieOnSale = [
     // [smoothie, smoothiePrice, smoothieColor, imageName],
-     ["Ice Cream","Krispy Kreme", "36", Colors.blue, "lib/images/ameicansmoothie.png"],
-     ["Strawberry","Dunkin smoothies","45", Colors.red,"lib/images/cocosmoothie.png"],
-     ["Grape","Costco","84", Colors.purple,"lib/images/gasoline.png"],
-     ["Choco","Walmart","95", Colors.brown, 'lib/images/mangosmoothie.png'],
-     ["Ice Cream","Krispy Kreme", "36", Colors.blue, "lib/images/mintsmoothie.png"],
-     ["Strawberry","Dunkin pizzas","45", Colors.red,"lib/images/secretsmoothie.png"],
-     ["Grape","Costco","84", Colors.purple,"lib/images/strawberrysmoothie.png"],
-     ["Choco","Walmart","95", Colors.brown, 'lib/images/watermelonsmoothie.png'],
+     ["American","Starbucks", "36", Colors.blue, "lib/images/ameicansmoothie.png"],
+     ["Coco","Oxxo","45", Colors.red,"lib/images/cocosmoothie.png"],
+     ["Gasolina","Modelorama","84", Colors.purple,"lib/images/gasoline.png"],
+     ["Mango","ItalianCoffee","95", Colors.brown, 'lib/images/mangosmoothie.png'],
+     ["Menta","Dunkin", "36", Colors.blue, "lib/images/mintsmoothie.png"],
+     ["SHHHHH","Caserito","45", Colors.red,"lib/images/secretsmoothie.png"],
+     ["Strawberry","Costco","84", Colors.purple,"lib/images/strawberrysmoothie.png"],
+     ["Watermelon","Walmart","95", Colors.brown, 'lib/images/watermelonsmoothie.png'],
    ];
   final Function(String, double) addToCart;
 
